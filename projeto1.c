@@ -18,15 +18,18 @@ int main(){
         printf("%d", n);
     }
     
-    //olá a bea esteve aqui!!!!!!!!!!!!!!!!!!!!!!
+    //olá a bea esteve aqui
     teste1();
 
 
     return 0;
 }
-//asdasdasdasd
 
 
 int aumenta(){
     return 45;
+}
+
+int decresce(){
+    return -10;
 }
