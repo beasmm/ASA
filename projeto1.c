@@ -19,7 +19,8 @@ int main(){
     }
     
     //olá a bea esteve aqui
-    teste1();
+    aumenta();
+    decresce();
 
 
     return 0;
