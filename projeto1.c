@@ -4,9 +4,6 @@
 
 int line, column;
 
-
-
-
 int main(){
     //scanf("%d", &line);
     //scanf("%d", &column);
@@ -30,5 +27,5 @@ int main(){
 
 
 int teste1(){
-    return 5;
+    return 45;
 }
