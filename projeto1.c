@@ -26,6 +26,6 @@ int main(){
 }
 
 
-int teste1(){
+int aumenta(){
     return 45;
 }
