@@ -18,6 +18,8 @@ int main(){
         int n = tiles[i];
         printf("%d", n);
     }
+    
+    //olá a bea esteve aqui!!!!!!!!!!!!!!!!!!!!!!
 
     return 0;
 }
