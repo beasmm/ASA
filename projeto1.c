@@ -5,6 +5,8 @@
 int line, column;
 
 
+//teste
+
 int main(){
     //scanf("%d", &line);
     //scanf("%d", &column);
