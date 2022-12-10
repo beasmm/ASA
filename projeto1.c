@@ -2,11 +2,17 @@
 #include <stdio.h>
 
 
-int line, column;
+typedef struct {
+    int line;
+    int column;
+}table;
 
 int main(){
-    //scanf("%d", &line);
-    //scanf("%d", &column);
+    scanf("%d", &table.line);
+    scanf("%d", &table.column);
+
+    printf("%dx%d", table->)
+
     int tiles[line], n;
     for(int i = line; i > 0; i--){
         scanf("%d", &n);
@@ -18,7 +24,7 @@ int main(){
         printf("%d", n);
     }
     
-    //olá a bea esteve aqui
+    
     aumenta();
     decresce();
 
