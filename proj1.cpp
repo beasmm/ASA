@@ -19,11 +19,19 @@ int calcSq(int a) {
 
 int main() {
     int line, column, sq;
+    int i, a;
     vector<int> v;
 
 
     cin >> line;
     cin >> column;
+
+
+    for (i = 0; i < line; i++) {
+        cin >> a;
+        v.push_back(a);
+    }
+
 
     if(isSquare(line, column)) sq = calcSq(line);
 
