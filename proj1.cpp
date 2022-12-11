@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -17,9 +18,8 @@ int calcSq(int a) {
 }
 
 int main() {
-    int line;
-    int column;
-    int sq;
+    int line, column, sq;
+    vector<int> v;
 
     cin >> line;
     cin >> column;
