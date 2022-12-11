@@ -19,7 +19,7 @@ int calcSq(int a) {
 
 int main() {
     int line, column, sq;
-    //vector<int> v;
+    vector<int> v;
 
 
     cin >> line;
