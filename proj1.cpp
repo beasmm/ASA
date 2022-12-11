@@ -37,5 +37,7 @@ int main() {
 
     if (out != 0) (isSquare(line, column)) sq = calcSq(line);
 
+    cout << out  << endl;
+
     return 0;
 }

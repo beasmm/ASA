@@ -14,6 +14,8 @@ int CalcSqr(int lin, int cal, int path[]){
             Sqr = lin -1;
     }
 
+    cout << "calcsqr: " << Sqr << endl;
+
     return Sqr;
 }
 
@@ -44,6 +46,6 @@ int main(){
     }
     int c = Cal(n, m, path, CalcSqr(n,m,path), 1);
 
-    cout << c;
+    cout << c << endl;
     return 0;
 }
