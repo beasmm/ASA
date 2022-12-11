@@ -20,6 +20,7 @@ int calcSq(int a) {
 int main() {
     int line, column, sq;
     int i, a;
+    int out = 0;
     vector<int> v;
 
 
@@ -29,11 +30,12 @@ int main() {
 
     for (i = 0; i < line; i++) {
         cin >> a;
+        out += a;
         v.push_back(a);
     }
 
 
-    if(isSquare(line, column)) sq = calcSq(line);
+    if (out != 0) (isSquare(line, column)) sq = calcSq(line);
 
     return 0;
 }
