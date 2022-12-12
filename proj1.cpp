@@ -4,6 +4,18 @@
 using namespace std;
 
 
+int maxSqr(int n_lines, vector<int> path){
+    int maxArea = 1;
+
+    for (int i = 0; i < n_lines; i++) {
+        if (n_lines - (i+1) >= path[i] - 1) 
+            maxArea = path[i];
+    }
+    
+    return maxArea;
+}
+
+
 int isSquare(int line, int column) {
     if (line * line == column * column) return 1;
 
@@ -18,24 +30,26 @@ int calcSq(int a) {
 }
 
 int main() {
-    int line, column, sq;
+    int n, m, sq;
     int i, a;
     int out = 0;
     vector<int> v;
 
 
-    cin >> line;
-    cin >> column;
+    cin >> n;
+    cin >> m;
 
 
-    for (i = 0; i < line; i++) {
+    for (i = 0; i < n; i++) {
         cin >> a;
         out += a;
         v.push_back(a);
     }
 
 
-    if (out != 0) (isSquare(line, column)) sq = calcSq(line);
+    if (out != 0){
+        out = maxSqr(n, v);
+    }
 
     cout << out  << endl;
 
