@@ -16,11 +16,10 @@ int checkSqr(int size, int row){
 
 
 vector<vector<int>> updateMatrix(vector<vector<int>> matrix, int row, int col, int size) {
-    for (int x = size - 1; x >= 0; x--) {
-        matrix[row+size][col];
-    }
-    for (int y = size - 1; y >= 0; y--) {
-        matrix[row][col+y];
+    for (int x = 0; x <= size-1; x++) {
+        for (int y = 0; y <= size-1; y++) {
+            matrix[x][y] = 0;
+        }
     }
     return matrix;
 }
@@ -31,16 +30,16 @@ int rowsEmptied(vector<vector<int>> matrix) {
     for(row = 0; row < n; row++) {
         for(col = 0; col < m; col++) {
             if (matrix[row][col] == 1)
-                col = m;
+                col = m + 1;
         }
-        if (col == m) break;
+        if (col == m + 1) return row;
     }
-    return row;
+    return 0;
 }
 
 
 int sum(int row, vector<vector<int>> mat, vector<int> path) {
-    if (row == n) return 1;
+    if (row >= n) return 1;
 
     int col, size = 0;
     int count = 0;
@@ -50,21 +49,15 @@ int sum(int row, vector<vector<int>> mat, vector<int> path) {
     }
 
     while (size >= 2) {
-        cout << "size: " << size;
         if (checkSqr(size, row) == 1) {
             vector<vector<int>> newMat = updateMatrix(mat, row, col, size);
-            row += rowsEmptied(newMat);
-
-            count += sum(row, newMat, path);
-
-            cout << " count: "<< count << "row: " << row << endl;
+            count += sum(row + rowsEmptied(newMat), newMat, path);
         }
         size--;
     }
     vector<vector<int>> newMat = updateMatrix(mat, row, col, size);
-    row += rowsEmptied(newMat);
 
-    return count + sum(row, newMat, path);
+    return count + sum(row + rowsEmptied(newMat), newMat, path);
 }
 
 
