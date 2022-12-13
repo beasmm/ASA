@@ -7,57 +7,76 @@ using namespace std;
 //Variaveis globais: valores n e m, e o caminho
 int n, m;
 
-int checkSqr(int size, int row){
-
-    if(row + size <= n) return 1;
-
+/* int checkSqr(int size){
+    if(size <= n) return 1;
     return 0;
 }
+ */
 
-
-vector<vector<int>> updateMatrix(vector<vector<int>> matrix, int row, int col, int size) {
+vector<vector<int>> updateMatrix(vector<vector<int>> matrix, int col, int size) {
     for (int x = 0; x <= size-1; x++) {
         for (int y = 0; y <= size-1; y++) {
-            matrix[x][y] = 0;
+            matrix[x][col-y] = 0;
         }
     }
+    /* for (int i = 0; i < matrix.size(); i++) {
+        for (int j = 0; j < m; j++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    } 
+    cout << "-------------------" << endl; */
     return matrix;
 }
 
 
 int rowsEmptied(vector<vector<int>> matrix) {
     int row, col;
-    for(row = 0; row < n; row++) {
+    for(row = 0; row < (int)matrix.size(); row++) {
         for(col = 0; col < m; col++) {
-            if (matrix[row][col] == 1)
-                col = m + 1;
+            if (matrix[row][col] == 1){
+                return row;
+            }
         }
-        if (col == m + 1) return row;
     }
-    return 0;
+    return row;
 }
 
 
-int sum(int row, vector<vector<int>> mat, vector<int> path) {
-    if (row >= n) return 1;
-
+int sum(vector<vector<int>> mat, vector<int> path) {
+    if (mat.empty() || (int)mat.size() <= 1){
+        return 1;
+    }
+    
     int col, size = 0;
     int count = 0;
+    int rEmptied = 0;
 
-    for(col = 0; col < path[row]; col++) {
-        if (mat[row][col] == 1) size++;
+    for(col = 0; col < path[0]; col++) {
+        if (mat[0][col] == 0) break; 
+        size++;
     }
-
+    col--;
     while (size >= 2) {
-        if (checkSqr(size, row) == 1) {
-            vector<vector<int>> newMat = updateMatrix(mat, row, col, size);
-            count += sum(row + rowsEmptied(newMat), newMat, path);
+        if (size <= (int)mat.size()) {
+            vector<vector<int>> newMat = updateMatrix(mat, col, size);
+            vector<int> newPath = path;
+            rEmptied = rowsEmptied(newMat);
+            while (rEmptied > 0) {
+                newMat.erase(newMat.begin());
+                    newPath.erase(newPath.begin());
+                rEmptied--;
+            }
+            count += sum(newMat, newPath);
         }
+        
         size--;
-    }
-    vector<vector<int>> newMat = updateMatrix(mat, row, col, size);
+    }   
 
-    return count + sum(row + rowsEmptied(newMat), newMat, path);
+    vector<vector<int>> newMat = updateMatrix(mat, col, size); 
+    newMat.erase(newMat.begin());
+    path.erase(path.begin());
+    return count + sum(newMat, path);
 }
 
 
@@ -72,12 +91,9 @@ int main(){
 
     int a;
     int count = 0;
-    int N = n+1;
-    int M = m+1;
-
 
     //Inicialização da matriz de acordo com valores introduzidos
-    vector<vector<int>> matrix(N, vector<int>(M));
+    vector<vector<int>> matrix(n, vector<int>(m));
     for (int i = 0; i < n; i++) {
         cin >> a;
         count += a;
@@ -87,19 +103,23 @@ int main(){
         }
     }
 
+        
+
+
     if (count == 0) cout << 0 << endl;
 
     else {
-        count = sum(0, matrix, path);
+        count = sum(matrix, path);
         cout << count << endl;
     }
-    /* 
+/*      
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             cout << matrix[i][j] << " ";
         }
         cout << endl;
-    } */
-    
+    } 
+    */
+     
     return 0;
 }
