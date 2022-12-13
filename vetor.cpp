@@ -3,7 +3,7 @@
 
 using namespace std;
 
-
+/*
 vector<int> Calcus(int n, int m, vector<vector<int>> mat){
     vector<int> vals(n-2, 0);
 
@@ -26,7 +26,55 @@ vector<int> Calcus(int n, int m, vector<vector<int>> mat){
     
 
     return vals;
+}*/
+int CheckSq(int val, int n){
+    if(n-val >=0) return 1;
+    return 0;
 }
+
+
+
+vector<int> Calcus(int n, int m, vector<vector<int>> mat){
+    vector<int> vals(n-2, 0);
+    int val = 0;
+
+
+    for(int row = 0; col < n; i++){
+        for(int col = 0; mat[row][col] == 0; col ++){
+            val++;
+        }
+
+        for(val; )
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
 
 
 
