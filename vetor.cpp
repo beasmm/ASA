@@ -34,17 +34,24 @@ int CheckSq(int val, int n){
 
 
 
-vector<int> Calcus(int n, int m, vector<vector<int>> mat){
+vector<int> Calcus(int n, int m, vector<vector<int>> mat, vector<int> path){
     vector<int> vals(n-2, 0);
-    int val = 0;
+    int check = 0;
 
 
-    for(int row = 0; col < n; i++){
-        for(int col = 0; mat[row][col] == 0; col ++){
-            val++;
+    for(int row = 0; col < n; row++){
+        for(int col = 0; col == path[row]; col ++){
+            if(mat[row][col])check++;
         }
 
-        for(val; )
+        for(check; check > 0; check--){
+            if(CheckSq(check, n)){
+
+            }
+
+
+
+        }
 
 
 
@@ -82,7 +89,7 @@ int main(){
 
     int n,m, a;
 
-    //vector<int> poop;
+    vector<int> path;
 
     cin >> n;
     cin >> m;
@@ -95,6 +102,7 @@ int main(){
     for (int i = 0; i < n; i++) {
         if (i != 0){
             cin >> a;
+            path[i] = a;
             for (int j = 0; j < a; j++) {
                 matrix[i+1][j] = 1;
             }
