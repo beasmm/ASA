@@ -18,13 +18,13 @@ vector<vector<int>> updateMatrix(vector<vector<int>> matrix, int col, int size) 
             matrix[x][col-y] = 0;
         }
     }
-    for (int i = 0; i < matrix.size(); i++) {
+    /* for (int i = 0; i < matrix.size(); i++) {
         for (int j = 0; j < m; j++) {
             cout << matrix[i][j] << " ";
         }
         cout << endl;
     } 
-    cout << "-------------------" << endl;
+    cout << "-------------------" << endl; */
     return matrix;
 }
 
