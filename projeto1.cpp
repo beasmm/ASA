@@ -14,18 +14,18 @@ int n, m;
  */
 
 vector<vector<int>> updateMatrix(vector<vector<int>> matrix, int col, int size) {
-    for (int x = 0; x <= size-1; x++) {
-        for (int y = 0; y <= size-1; y++) {
+    for (int x = 0; x < size; x++) {
+        for (int y = 0; y < size; y++) {
             matrix[x][col-y] = 0;
         }
     }
-    /* for (int i = 0; i < matrix.size(); i++) {
+    for (int i = 0; i < matrix.size(); i++) {
         for (int j = 0; j < m; j++) {
             cout << matrix[i][j] << " ";
         }
         cout << endl;
     } 
-    cout << "-------------------" << endl; */
+    cout << "-------------------" << endl;
     return matrix;
 }
 
@@ -45,6 +45,14 @@ int rowsEmptied(vector<vector<int>> matrix) {
 
 int sum(vector<vector<int>> mat, vector<int> path) {
     if (mat.empty() || (int)mat.size() <= 1){
+        cout << "end" << endl;
+        for (int i = 0; i < mat.size(); i++) {
+            for (int j = 0; j < m; j++) {
+                cout << mat[i][j] << " ";
+            }
+            cout << endl;
+        }
+        cout << "~~~~~~~~~~~~~~~~" << endl;
         return 1;
     }
     
@@ -56,6 +64,7 @@ int sum(vector<vector<int>> mat, vector<int> path) {
         if (mat[0][col] == 0) break; 
         size++;
     }
+    cout << "column: " << col << endl;
     col--;
     while (size >= 2) {
         if (size <= (int)mat.size()) {
@@ -64,18 +73,20 @@ int sum(vector<vector<int>> mat, vector<int> path) {
             rEmptied = rowsEmptied(newMat);
             while (rEmptied > 0) {
                 newMat.erase(newMat.begin());
-                    newPath.erase(newPath.begin());
+                newPath.erase(newPath.begin());
                 rEmptied--;
             }
-            count += sum(newMat, newPath);
+            count += sum(newMat, newPath);          
         }
         
         size--;
     }   
-
-    vector<vector<int>> newMat = updateMatrix(mat, col, size); 
-    newMat.erase(newMat.begin());
-    path.erase(path.begin());
+    cout << "one one one one" << endl;
+    vector<vector<int>> newMat = updateMatrix(mat, col, size);
+    if(col == 0 && mat[0].empty()){
+        newMat.erase(newMat.begin());
+        path.erase(path.begin());
+    } 
     return count + sum(newMat, path);
 }
 
